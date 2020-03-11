@@ -4,8 +4,15 @@
   "description": "A lightweight transpiler from jsx to html",
   "main": "index.js",
   "scripts": {
+    "trans": "babel --plugins @babel/plugin-transform-react-jsx src/test.jsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Saahil Hamayun",
-  "license": "ISC"
-
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-transform-react-jsx": "^7.8.3"
+  }
+}

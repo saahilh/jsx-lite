@@ -1,0 +1,6 @@
+{
+  "presets": [["@babel/plugin-transform-react-jsx", {
+    "pragma": "Test.function",
+    "pragmaFrag": "Test.fragFunction"
+  }]]
+}
