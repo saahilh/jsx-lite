@@ -1,0 +1,11 @@
+{
+  "name": "jsx-lite",
+  "version": "1.0.0",
+  "description": "A lightweight transpiler from jsx to html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saahil Hamayun",
+  "license": "ISC"
+
