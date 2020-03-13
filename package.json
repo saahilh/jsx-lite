@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "trans": "babel src --out-dir build",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "author": "Saahil Hamayun",
   "license": "ISC",
