@@ -3,7 +3,8 @@ const JsxLite = {
     let elementProps = '';
 
     if (props) {
-      const { className, ...rest } = props;
+      const { className, id, ...rest } = props;
+      if (id) elementProps += ` id="${id}"`;
       if (className) elementProps += ` class="${className}"`;
     }
 

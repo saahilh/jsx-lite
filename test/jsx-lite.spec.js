@@ -31,9 +31,9 @@ describe('createComponent', () => {
     });
 
     describe('When given props', () => {
-      it('Should show its class', () => {
-        const Test = <div className="test" />;
-        expect(Test).toBe('<div class="test"></div>')
+      it('Should show its id and class', () => {
+        const Test = <div id="testId" className="testClass" />;
+        expect(Test).toBe('<div id="testId" class="testClass"></div>')
       });
     });
   });
