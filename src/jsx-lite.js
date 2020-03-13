@@ -1,14 +1,17 @@
 const JsxLite = {
   createComponent(Component, props, ...children) {
-    let elementProps = '';
+    const isPrimitiveElement = typeof (Component) === 'string';
 
-    if (props) {
-      const { className, id, ...rest } = props;
-      if (id) elementProps += ` id="${id}"`;
-      if (className) elementProps += ` class="${className}"`;
-    }
+    if (isPrimitiveElement) {
+      let elementProps = '';
 
-    if (typeof (Component) === 'string') {
+      if (props) {
+        const { className, id } = props;
+
+        if (id) elementProps += ` id="${id}"`;
+        if (className) elementProps += ` class="${className}"`;
+      }
+
       return `<${Component}${elementProps}>${children.join('')}</${Component}>`;
     }
 
