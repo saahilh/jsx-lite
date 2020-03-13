@@ -4,8 +4,8 @@
   "description": "A lightweight transpiler from jsx to html",
   "main": "index.js",
   "scripts": {
-    "trans": "mkdir -p build && babel --plugins @babel/plugin-transform-react-jsx src/app.jsx > build/app.js",
-    "test": "mkdir -p test && babel --plugins @babel/plugin-transform-react-jsx src/app.jsx > test/build.js && jest"
+    "trans": "babel src --out-dir build",
+    "test": "babel src --out-dir test/build && jest"
   },
   "author": "Saahil Hamayun",
   "license": "ISC",
