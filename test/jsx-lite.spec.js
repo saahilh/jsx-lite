@@ -10,6 +10,25 @@ describe('createComponent', () => {
       const Test = <div />;
       expect(Test).toBe('<div></div>')
     });
+
+    it('Should work with children', () => {
+      const OneChildTest = (
+        <div>
+          <div></div>
+        </div>
+      );
+
+      expect(OneChildTest).toBe('<div><div></div></div>');
+
+      const TwoChildTest = (
+        <div>
+          <div></div>
+          <div></div>
+        </div>
+      );
+
+      expect(TwoChildTest).toBe('<div><div></div><div></div></div>')
+    });
   });
 });
 

@@ -1,7 +1,7 @@
 const JsxLite = {
   createComponent(Component, props, ...children) {
     if (typeof (Component) === 'string') {
-      return `<${Component}></${Component}>`;
+      return `<${Component}>${children.join('')}</${Component}>`;
     }
 
     return '';
