@@ -29,6 +29,13 @@ describe('createComponent', () => {
 
       expect(TwoChildTest).toBe('<div><div></div><div></div></div>')
     });
+
+    describe('When given props', () => {
+      it('Should show its class', () => {
+        const Test = <div className="test" />;
+        expect(Test).toBe('<div class="test"></div>')
+      });
+    });
   });
 });
 
