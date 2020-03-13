@@ -36,6 +36,17 @@ describe('createComponent', () => {
         expect(Test).toBe('<div id="testId" class="testClass"></div>')
       });
     });
+
+    it('Should work with children and props', () => {
+      const Test = (
+        <div id="testId" className="testClass" test="test">
+          <div></div>
+          <div></div>
+        </div>
+      );
+
+      expect(Test).toBe('<div id="testId" class="testClass"><div></div><div></div></div>')
+    })
   });
 });
 
