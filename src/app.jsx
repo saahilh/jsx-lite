@@ -1,7 +1,7 @@
 import JsxLite from './jsx-lite';
 
 var Hello = <></>
-var test = (
+var app = (
   <Hello>
     <div>Hi</div>
     <span>Who are you?</span>
