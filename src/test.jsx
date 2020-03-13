@@ -1,9 +1,9 @@
-import Test from 'test';
+import JsxLite from './jsx-lite';
 
 var Hello = <></>
 var test = (
-    <Hello>
-      <div>Hi</div>
-      <span>Who are you?</span>
-    </Hello>
-  );
+  <Hello>
+    <div>Hi</div>
+    <span>Who are you?</span>
+  </Hello>
+);

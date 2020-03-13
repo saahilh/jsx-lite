@@ -1,6 +1,6 @@
 {
-  "presets": [["@babel/plugin-transform-react-jsx", {
-    "pragma": "Test.function",
-    "pragmaFrag": "Test.fragFunction"
+  "plugins": [["@babel/plugin-transform-react-jsx", {
+    "pragma": "JsxLite.createComponent",
+    "pragmaFrag": "JsxLite.createFragment"
   }]]
 }
