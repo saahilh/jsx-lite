@@ -6,10 +6,11 @@ const JsxLite = {
       let elementProps = '';
 
       if (props) {
-        const { className, id } = props;
+        const { className, id, style } = props;
 
         if (id) elementProps += ` id="${id}"`;
         if (className) elementProps += ` class="${className}"`;
+        if (style) elementProps += ` style="${style}"`;
       }
 
       return `<${Component}${elementProps}>${children.join('')}</${Component}>`;

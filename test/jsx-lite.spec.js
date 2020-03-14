@@ -31,9 +31,9 @@ describe('createComponent', () => {
     });
 
     describe('When given props', () => {
-      it('Should only show its id and class', () => {
-        const Test = <div id="testId" className="testClass" test="test" />;
-        expect(Test).toBe('<div id="testId" class="testClass"></div>')
+      it('Should only show its id, class, and style', () => {
+        const Test = <div id="testId" className="testClass" style="color: red;" test="test" />;
+        expect(Test).toBe('<div id="testId" class="testClass" style="color: red;"></div>')
       });
     });
 
