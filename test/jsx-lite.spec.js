@@ -66,32 +66,38 @@ describe('createComponent', () => {
     });
 
     it('Should work with children', () => {
-      const CustomComponent = ({ children }) => (
+      const CustomComponentWithChildren = ({ children }) => (
         <div>
           {children}
         </div>
       );
 
-      const OneChildCustomComponentTest = (
-        <CustomComponent>
-          <div></div>
-        </CustomComponent>
+      const NoChildCustomComponentWithChildrenTest = (
+        <CustomComponentWithChildren />
       );
 
-      expect(OneChildCustomComponentTest).toBe('<div><div></div></div>');
+      expect(NoChildCustomComponentWithChildrenTest).toBe('<div></div>');
 
-      const CustomTestComponentWithTwoChildren = () => (
-        <CustomComponent>
+      const OneChildCustomComponentWithChildrenTest = (
+        <CustomComponentWithChildren>
           <div></div>
-          <div></div>
-        </CustomComponent>
+        </CustomComponentWithChildren>
       );
 
-      const TwoChildCustomComponentTest = (
-        <CustomTestComponentWithTwoChildren />
+      expect(OneChildCustomComponentWithChildrenTest).toBe('<div><div></div></div>');
+
+      const TwoChildCustomTestComponentWithChildren = () => (
+        <CustomComponentWithChildren>
+          <div></div>
+          <div></div>
+        </CustomComponentWithChildren>
+      );
+
+      const TwoChildCustomComponentWithChildrenTest = (
+        <TwoChildCustomTestComponentWithChildren />
       );
       
-      expect(TwoChildCustomComponentTest).toBe('<div><div></div><div></div></div>')
+      expect(TwoChildCustomComponentWithChildrenTest).toBe('<div><div></div><div></div></div>')
     });
 
     it('Should work with props passed on to primitive component', () => {
