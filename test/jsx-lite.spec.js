@@ -176,14 +176,22 @@ describe('createComponent', () => {
       expect(ComplexComponentTest).toBe('<div><div><div></div></div><div></div><div><div></div></div></div>')
     });
   });
+
+  it('Should work when used with a fragment', () => {
+    const WordfulFragmentComponentTest = (
+      <JsxLite.Fragment>
+        <div></div>
+      </JsxLite.Fragment>
+    );
+
+    expect(WordfulFragmentComponentTest).toBe('<div></div>');
+
+    const WordlessFragmentComponentTest = (
+      <>
+        <div></div>
+      </>
+    );
+
+    expect(WordlessFragmentComponentTest).toBe('<div></div>');
+  });
 });
-
-describe('Fragment', () => {
-  it('Should be a function', () => {
-    expect(JsxLite.Fragment).toBeInstanceOf(Function);
-  });
-
-  it('Should return JsxLite.Fragment', () => {
-    expect(JsxLite.Fragment()).toBe('JsxLite.Fragment');
-  });
-})

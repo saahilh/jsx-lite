@@ -1,5 +1,10 @@
 const JsxLite = {
   createComponent(Component, props, ...children) {
+    const isFragment = !Component;
+    if (isFragment) {
+      return children ? children.join('') : '';
+    }
+
     const isPrimitiveElement = typeof (Component) === 'string';
 
     if (isPrimitiveElement) {
@@ -20,8 +25,8 @@ const JsxLite = {
 
     return Component(props);
   },
-  Fragment() {
-    return 'JsxLite.Fragment';
+  Fragment({ children, ...props }) {
+    return JsxLite.createComponent(undefined, props, children);
   },
 };
 
