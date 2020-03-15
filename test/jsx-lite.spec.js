@@ -113,13 +113,23 @@ describe('createComponent', () => {
         <div>{children}</div>
       );
 
-      const CustomComponentWithChildrenTest = (
+      const CustomComponentWithOneChildTest = (
         <CustomComponent>
           <div></div>
         </CustomComponent>
       );
       
-      expect(CustomComponentWithChildrenTest).toBe('<div><div></div></div>')
+      expect(CustomComponentWithOneChildTest).toBe('<div><div></div></div>')
+
+      
+      const CustomComponentWithTwoChildrenTest = (
+        <CustomComponent>
+          <div></div>
+          <div></div>
+        </CustomComponent>
+      );
+      
+      expect(CustomComponentWithTwoChildrenTest).toBe('<div><div></div><div></div></div>')
     });
   });
 
