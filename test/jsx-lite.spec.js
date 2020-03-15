@@ -66,30 +66,32 @@ describe('createComponent', () => {
     });
 
     it('Should work with children', () => {
-      const CustomTestComponentWithOneChild = () => (
+      const CustomComponent = ({ children }) => (
         <div>
-          <div></div>
+          {children}
         </div>
       );
 
       const OneChildCustomComponentTest = (
-        <CustomTestComponentWithOneChild />
+        <CustomComponent>
+          <div></div>
+        </CustomComponent>
       );
 
       expect(OneChildCustomComponentTest).toBe('<div><div></div></div>');
 
       const CustomTestComponentWithTwoChildren = () => (
-        <div>
+        <CustomComponent>
           <div></div>
-          <CustomTestComponentWithOneChild />
-        </div>
+          <div></div>
+        </CustomComponent>
       );
 
       const TwoChildCustomComponentTest = (
         <CustomTestComponentWithTwoChildren />
       );
       
-      expect(TwoChildCustomComponentTest).toBe('<div><div></div><div><div></div></div></div>')
+      expect(TwoChildCustomComponentTest).toBe('<div><div></div><div></div></div>')
     });
 
     it('Should work with props passed on to primitive component', () => {
