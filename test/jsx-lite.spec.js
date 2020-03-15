@@ -64,6 +64,49 @@ describe('createComponent', () => {
 
       expect(EmptyCustomTest).toBe('<div></div>');
     });
+
+    it('Should work with children', () => {
+      const CustomTestComponentWithOneChild = () => (
+        <div>
+          <div></div>
+        </div>
+      );
+
+      const OneChildCustomComponentTest = (
+        <CustomTestComponentWithOneChild />
+      );
+
+      expect(OneChildCustomComponentTest).toBe('<div><div></div></div>');
+
+      const CustomTestComponentWithTwoChildren = () => (
+        <div>
+          <div></div>
+          <CustomTestComponentWithOneChild />
+        </div>
+      );
+
+      const TwoChildCustomComponentTest = (
+        <CustomTestComponentWithTwoChildren />
+      );
+      
+      expect(TwoChildCustomComponentTest).toBe('<div><div></div><div><div></div></div></div>')
+    });
+
+    it('Should work with props passed on to primitive component', () => {
+      const CustomTestComponentWithPropsPassedToPrimitive = ({ id, className, style }) => (
+        <div id={id} className={className} style={style} />
+      );
+
+      const CustomComponentWithPropsPassedToPrimitiveTest = (
+        <CustomTestComponentWithPropsPassedToPrimitive
+          id="testId"
+          className="testClass"
+          style="color: red;"
+        />
+      );
+
+      expect(CustomComponentWithPropsPassedToPrimitiveTest).toBe('<div id="testId" class="testClass" style="color: red;"></div>')
+    });
   });
 });
 

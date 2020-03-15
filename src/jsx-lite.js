@@ -16,7 +16,7 @@ const JsxLite = {
       return `<${Component}${elementProps}>${children.join('')}</${Component}>`;
     }
 
-    return Component();
+    return Component(props);
   },
   Fragment() {
     return 'JsxLite.Fragment';
