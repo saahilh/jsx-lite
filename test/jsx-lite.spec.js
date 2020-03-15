@@ -141,7 +141,7 @@ describe('createComponent', () => {
     });
   });
 
-  describe('When used in a complex component involving all of the above', () => {
+  describe('When used in a component with complex custom component and primitive component nesting', () => {
     it('Should work', () => {
       const PrimitivePartA = (
         <div />
@@ -159,7 +159,9 @@ describe('createComponent', () => {
 
       const ComplexComponent = ({ children }) => (
         <ComponentPartA>
-          <ComponentPartA />
+          <ComponentPartA>
+            <ComponentPartA />
+          </ComponentPartA>
           {PrimitivePartA}
           {children}
         </ComponentPartA>
@@ -171,7 +173,7 @@ describe('createComponent', () => {
         </ComplexComponent>
       );
 
-      expect(ComplexComponentTest).toBe('<div><div></div><div></div><div><div></div></div></div>')
+      expect(ComplexComponentTest).toBe('<div><div><div></div></div><div></div><div><div></div></div></div>')
     });
   });
 });
