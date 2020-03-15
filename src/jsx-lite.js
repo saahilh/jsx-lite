@@ -14,6 +14,10 @@ const JsxLite = {
       return `<${Component}${elementProps}>${children.join('')}</${Component}>`;
     }
 
+    if (children) {
+      return Component({ ...props, children });
+    }
+
     return Component(props);
   },
   Fragment() {

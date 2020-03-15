@@ -107,6 +107,20 @@ describe('createComponent', () => {
 
       expect(CustomComponentWithPropsPassedToPrimitiveTest).toBe('<div id="testId" class="testClass" style="color: red;"></div>')
     });
+
+    it('Should work with children', () => {
+      const CustomComponent = ({ children }) => (
+        <div>{children}</div>
+      );
+
+      const CustomComponentWithChildrenTest = (
+        <CustomComponent>
+          <div></div>
+        </CustomComponent>
+      );
+      
+      expect(CustomComponentWithChildrenTest).toBe('<div><div></div></div>')
+    });
   });
 });
 
