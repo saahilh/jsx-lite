@@ -15,7 +15,7 @@ const JsxLite = {
     }
 
     if (children) {
-      return Component({ ...props, children });
+      return Component({ ...props, children: children.join('') });
     }
 
     return Component(props);

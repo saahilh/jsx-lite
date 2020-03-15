@@ -122,6 +122,40 @@ describe('createComponent', () => {
       expect(CustomComponentWithChildrenTest).toBe('<div><div></div></div>')
     });
   });
+
+  describe('When used in a complex component involving all of the above', () => {
+    it('Should work', () => {
+      const PrimitivePartA = (
+        <div />
+      );
+
+      const PrimitivePartB = (
+        <div>
+          <div></div>
+        </div>
+      );
+
+      const ComponentPartA = ({ children }) => (
+        <div>{children}</div>
+      );
+
+      const ComplexComponent = ({ children }) => (
+        <ComponentPartA>
+          <ComponentPartA />
+          {PrimitivePartA}
+          {children}
+        </ComponentPartA>
+      );
+
+      const ComplexComponentTest = (
+        <ComplexComponent>
+          {PrimitivePartB}
+        </ComplexComponent>
+      );
+
+      expect(ComplexComponentTest).toBe('<div><div></div><div></div><div><div></div></div></div>')
+    });
+  });
 });
 
 describe('Fragment', () => {
