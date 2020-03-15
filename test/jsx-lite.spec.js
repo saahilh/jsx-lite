@@ -7,45 +7,48 @@ describe('createComponent', () => {
 
   describe('When called with primitive html types', () => {
     it('Should work without children or props', () => {
-      const Test = <div />;
-      expect(Test).toBe('<div></div>')
+      const EmptyPrimitiveTest = <div />;
+      expect(EmptyPrimitiveTest).toBe('<div></div>')
     });
 
     it('Should work with children', () => {
-      const OneChildTest = (
+      const OneChildPrimitiveTest = (
         <div>
           <div></div>
         </div>
       );
 
-      expect(OneChildTest).toBe('<div><div></div></div>');
+      expect(OneChildPrimitiveTest).toBe('<div><div></div></div>');
 
-      const TwoChildTest = (
+      const TwoChildPrimitiveTest = (
         <div>
           <div></div>
           <div></div>
         </div>
       );
 
-      expect(TwoChildTest).toBe('<div><div></div><div></div></div>')
+      expect(TwoChildPrimitiveTest).toBe('<div><div></div><div></div></div>')
     });
 
     describe('When given props', () => {
       it('Should only show its id, class, and style', () => {
-        const Test = <div id="testId" className="testClass" style="color: red;" test="test" />;
-        expect(Test).toBe('<div id="testId" class="testClass" style="color: red;"></div>')
+        const AllPropsPrimitiveTest = (
+          <div id="testId" className="testClass" style="color: red;" test="test" />
+        );
+
+        expect(AllPropsPrimitiveTest).toBe('<div id="testId" class="testClass" style="color: red;"></div>')
       });
     });
 
     it('Should work with children and props', () => {
-      const Test = (
+      const FullPrimitiveTest = (
         <div id="testId" className="testClass" test="test">
           <div></div>
           <div></div>
         </div>
       );
 
-      expect(Test).toBe('<div id="testId" class="testClass"><div></div><div></div></div>')
+      expect(FullPrimitiveTest).toBe('<div id="testId" class="testClass"><div></div><div></div></div>')
     })
   });
 });
