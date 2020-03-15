@@ -33,7 +33,7 @@ describe('createComponent', () => {
     describe('When given props', () => {
       it('Should only show its id, class, and style', () => {
         const AllPropsPrimitiveTest = (
-          <div id="testId" className="testClass" style="color: red;" test="test" />
+          <div id="testId" class="testClass" style="color: red;" test="test" />
         );
 
         expect(AllPropsPrimitiveTest).toBe('<div id="testId" class="testClass" style="color: red;"></div>')
@@ -42,7 +42,7 @@ describe('createComponent', () => {
 
     it('Should work with children and props', () => {
       const FullPrimitiveTest = (
-        <div id="testId" className="testClass" test="test">
+        <div id="testId" class="testClass" test="test">
           <div></div>
           <div></div>
         </div>
@@ -94,7 +94,7 @@ describe('createComponent', () => {
 
     it('Should work with props passed on to primitive component', () => {
       const CustomTestComponentWithPropsPassedToPrimitive = ({ id, className, style }) => (
-        <div id={id} className={className} style={style} />
+        <div id={id} class={className} style={style} />
       );
 
       const CustomComponentWithPropsPassedToPrimitiveTest = (
