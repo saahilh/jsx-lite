@@ -49,7 +49,21 @@ describe('createComponent', () => {
       );
 
       expect(FullPrimitiveTest).toBe('<div id="testId" class="testClass"><div></div><div></div></div>')
-    })
+    });  
+  });
+
+  describe('When called with custom components', () => {
+    it('Should work without children or props', () => {
+      const EmptyCustomTestComponent = () => (
+        <div />
+      );
+
+      const EmptyCustomTest = (
+        <EmptyCustomTestComponent />
+      );
+
+      expect(EmptyCustomTest).toBe('<div></div>');
+    });
   });
 });
 
