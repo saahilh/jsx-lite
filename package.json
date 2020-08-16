@@ -4,7 +4,7 @@
   "description": "A lightweight transpiler from jsx to html",
   "main": "index.js",
   "scripts": {
-    "trans": "babel src --out-dir build & webpack ./build/app.js",
+    "build": "babel src --out-dir build; webpack ./build/app.js -o dist/bundle.js; rm -r build",
     "test": "jest --watchAll"
   },
   "author": "Saahil Hamayun",

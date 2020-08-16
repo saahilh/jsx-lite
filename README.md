@@ -11,4 +11,4 @@ So in the transformation of jsx -> js -> html, I am currently working on the js 
     * Clone local copy of repository
     * To setup `npm install`
     * To test, `npm run test`
-    * To run transformation on the example in app.jsx, `npm run trans`. Output will be in build folder.
+    * To run transformation on the example in app.jsx, `npm run build`. This will create the output dist/bundle.js that will be loaded in by index.html.
