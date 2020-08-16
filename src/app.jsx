@@ -9,4 +9,4 @@ var app = (
   </Hello>
 );
 
-document.getElementById("root").appendChild(app);
+document.getElementById("root").innerHTML = app;
