@@ -6,3 +6,9 @@ The goal will be to do this without using React and ReactDOM.
 For now, this uses plugin-transform-react-jsx to handle conversions from jsx to method calls.
 The logic in it is primarily taking the argument from that method call and making corresponding html elements.
 So in the transformation of jsx -> js -> html, I am currently working on the js -> html step.
+
+# Instructions
+    * Clone local copy of repository
+    * To setup `npm install`
+    * To test, `npm run test`
+    * To run transformation on the example in app.jsx, `npm run trans`. Output will be in build folder.
