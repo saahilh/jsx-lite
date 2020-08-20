@@ -38,6 +38,59 @@ describe('createComponent', () => {
 
         expect(AllPropsPrimitiveTest).toBe('<div id="testId" class="testClass" style="color: red;"></div>')
       });
+
+      it('Should work when the input style is an object', () => {
+        const getStyle = () => ({
+          color: 'red',
+          backgroundColor: 'green',
+        });
+
+        const ObjectStyleTest = (
+          <div style={getStyle()} />
+        );
+
+        expect(ObjectStyleTest).toBe('<div style="color: red;background-color: green;"></div>');
+      });
+
+      it('Should not set style when the input object is null', () => {
+        const getStyle = () => null;
+
+        const ObjectInvalidStyleTest = (
+          <div style={getStyle()} />
+        );
+
+        expect(ObjectInvalidStyleTest).toBe('<div></div>');
+      });
+
+      it('Should not set style when the input object is an array', () => {
+        const getStyle = () => [];
+
+        const ObjectInvalidStyleTest = (
+          <div style={getStyle()} />
+        );
+
+        expect(ObjectInvalidStyleTest).toBe('<div></div>');
+      });
+
+      it('Should not set style when the input object is a number', () => {
+        const getStyle = () => 5;
+
+        const ObjectInvalidStyleTest = (
+          <div style={getStyle()} />
+        );
+
+        expect(ObjectInvalidStyleTest).toBe('<div></div>');
+      });
+
+      it('Should not set style when the input object is a function', () => {
+        const getStyle = () => (() => null);
+
+        const ObjectInvalidStyleTest = (
+          <div style={getStyle()} />
+        );
+
+        expect(ObjectInvalidStyleTest).toBe('<div></div>');
+      });
     });
 
     it('Should work with children and props', () => {
