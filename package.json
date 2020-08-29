@@ -11,11 +11,11 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.1",
+    "@babel/core": "^7.11.4",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "jest": "^25.1.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "jest": "^25.5.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
