@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div id="content"></div>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/javascript">
+            Babel.registerPreset("jsx-lite", {
+                presets: [[Babel.availablePresets['env']]],
+                plugins: [
+                    [
+                        Babel.availablePlugins["transform-modules-amd"],
+                    ],
+                    [
+                        Babel.availablePlugins["transform-react-jsx"],
+                        {
+                            "pragma": "JsxLite.createComponent",
+                            "pragmaFrag": "JsxLite.createFragment"
+                        }
+                    ],
+                ],
+            });
+        </script>
+        <script data-main="scripts/jsx-lite" src="../scripts/require.js"></script>
+        <script type="text/babel" data-presets="jsx-lite">
+            const Website = () => {
+                const getHeaderStyle = () => ({
+                    textAlign: 'center',
+                });
+
+                const getMainStyle = () => ({
+                    textAlign: 'center',
+                });
+
+                return (
+                    <>
+                        <header style={getHeaderStyle()}>
+                            <h1>Hi, I'm Saahil</h1>
+                        </header>
+                        <main style={getMainStyle()}>
+                            Who are you?
+                        </main>
+                    </>
+                );
+            };
+
+            let codeContainer = document.getElementById('content');
+            codeContainer.innerHTML = Website;
+        </script>
+    </body>
+</html>
