@@ -8,65 +8,37 @@
                 box-sizing: border-box;
                 font-family: monospace;
             }
+
             #content {
                 margin: auto;
                 width: 75vw;
             }
 
-            #jsx-input {
-                background-color: #1e1e1e;
-                color: #d4d4d4;
-            }
-            
             #output-js {
-                background-color: #1e1e1e;
-                color: #d16969;
+                height: 300px;
             }
 
-            #output-js, #jsx-input {
-                width: 100%;
-                height: 300px;
-                padding: 10px;
+            .error {
+                color: #d16969;
             }
 
             #content button {
                 width: 200px;
+                margin-top: 10px;
             }
         </style>
-        <script type="text/javascript">
-            function recompileJsx() {
-                let sourceContainer = document.getElementById('jsx-input');
-                
-                try {
-                    eval(Babel.transform(sourceContainer.value, {
-                        presets: [[Babel.availablePresets['env']]],
-                        plugins: [
-                            [
-                                Babel.availablePlugins["transform-react-jsx"],
-                                {
-                                    "pragma": "JsxLite.createComponent",
-                                    "pragmaFrag": "JsxLite.createFragment"
-                                }
-                            ],
-                        ],
-                    }).code);
-                } catch (e) {
-                    const errorContainer = document.createElement('pre');
-                    const errorMessage = document.createTextNode(e.message);
-                    errorContainer.appendChild(errorMessage);
-
-                    let outputContainer = document.getElementById('output-js');
-                    outputContainer.appendChild(errorContainer);
-                }
-            };
-        </script>
+        <script src="./node_modules/codemirror/lib/codemirror.js"></script>
+        <link rel="stylesheet" href="./node_modules/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="./node_modules/codemirror/theme/ambiance.css">
+        <script src="./node_modules/codemirror/mode/xml/xml.js"></script>
+        <script src="./node_modules/codemirror/mode/javascript/javascript.js"></script>
+        <script src="./node_modules/codemirror/mode/jsx/jsx.js"></script>
+        <script src="./node_modules/codemirror/keymap/sublime.js"></script>
     </head>
     <body>
         <div id="content">
-            <form id="source-jsx">
-                <textarea id="jsx-input"></textarea>
-            </form>
-            <div id="output-js" style="border: solid 1px #1e1e1e; "></div>
+            <textarea id="input-jsx"></textarea>
+            <div id="output-js"></div>
             <button onclick="recompileJsx();">Recompile</button>
         </div>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -84,36 +56,46 @@
                 ],
             });
 
-            let sourceContainer = document.getElementById('jsx-input');
-            sourceContainer.innerHTML = `
-const testContainer = () => (
-    <Website />
-);
+            let defaultSourceValue = `const exampleContainer = () => (\n\t<Example />\n);\n\nconst Example = () => {\t\n\tconst getStyle = () => ({\n\t\tbackgroundColor: '#1e1e1e',\n\t\tcolor: '#d4d4d4',\n\t\theight: '100%',\n\t\ttextAlign: 'center',\n\t});\n\n\treturn (\n\t\t<div style={getStyle()}>\n\t\t\t<h1>Hi, I'm Saahil</h1>\n\t\t\t<span>Who are you?</span>\n\t\t</div>\n\t);\n};\n\nlet root = document.getElementById('output-js');\nroot.innerHTML = exampleContainer();\n`;
+            let sourceTextArea = document.getElementById('input-jsx');
 
-const Website = () => {
-    const getHeaderStyle = () => ({
-        textAlign: 'center',
-    });
+            let codeMirrorInstance = CodeMirror(function(elt) {
+                sourceTextArea.parentNode.replaceChild(elt, sourceTextArea);
+            }, {
+                value: defaultSourceValue,
+                mode: 'jsx',
+                theme: 'ambiance',
+                keyMap: 'sublime',
+                lineNumbers: true,
+                tabSize: 2,
+            });
 
-    const getMainStyle = () => ({
-        textAlign: 'center',
-    });
+            function recompileJsx() {
+                let sourceContainer = document.getElementById('input-jsx');
+                
+                try {
+                    eval(Babel.transform(codeMirrorInstance.getValue(), {
+                        presets: [[Babel.availablePresets['env']]],
+                        plugins: [
+                            [
+                                Babel.availablePlugins["transform-react-jsx"],
+                                {
+                                    "pragma": "JsxLite.createComponent",
+                                    "pragmaFrag": "JsxLite.createFragment"
+                                }
+                            ],
+                        ],
+                    }).code);
+                } catch (e) {
+                    const errorContainer = document.createElement('pre');
+                    errorContainer.className = 'error';
+                    const errorMessage = document.createTextNode(e.message);
+                    errorContainer.appendChild(errorMessage);
 
-    return (
-        <>
-            <header style={getHeaderStyle()}>
-                <h1>Hi, I'm Saahil</h1>
-            </header>
-            <main style={getMainStyle()}>
-                Who are you?
-            </main>
-        </>
-    );
-};
-
-let outputContainer = document.getElementById('output-js');
-outputContainer.innerHTML = testContainer();
-`
+                    let outputContainer = document.getElementById('output-js');
+                    outputContainer.appendChild(errorContainer);
+                }
+            };
         </script>
         <script type="text/javascript" src="../scripts/jsx-lite.js"></script>
         <script type="text/javascript">recompileJsx();</script>
