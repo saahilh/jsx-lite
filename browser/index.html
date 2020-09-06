@@ -3,17 +3,77 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <style>
+            html {
+                box-sizing: border-box;
+                font-family: monospace;
+            }
+            #content {
+                margin: auto;
+                width: 75vw;
+            }
+
+            #jsx-input {
+                background-color: #1e1e1e;
+                color: #d4d4d4;
+            }
+            
+            #output-js {
+                background-color: #1e1e1e;
+                color: #d16969;
+            }
+
+            #output-js, #jsx-input {
+                width: 100%;
+                height: 300px;
+                padding: 10px;
+            }
+
+            #content button {
+                width: 200px;
+            }
+        </style>
+        <script type="text/javascript">
+            function recompileJsx() {
+                let sourceContainer = document.getElementById('jsx-input');
+                
+                try {
+                    eval(Babel.transform(sourceContainer.value, {
+                        presets: [[Babel.availablePresets['env']]],
+                        plugins: [
+                            [
+                                Babel.availablePlugins["transform-react-jsx"],
+                                {
+                                    "pragma": "JsxLite.createComponent",
+                                    "pragmaFrag": "JsxLite.createFragment"
+                                }
+                            ],
+                        ],
+                    }).code);
+                } catch (e) {
+                    const errorContainer = document.createElement('pre');
+                    const errorMessage = document.createTextNode(e.message);
+                    errorContainer.appendChild(errorMessage);
+
+                    let outputContainer = document.getElementById('output-js');
+                    outputContainer.appendChild(errorContainer);
+                }
+            };
+        </script>
     </head>
     <body>
-        <div id="content"></div>
+        <div id="content">
+            <form id="source-jsx">
+                <textarea id="jsx-input"></textarea>
+            </form>
+            <div id="output-js" style="border: solid 1px #1e1e1e; "></div>
+            <button onclick="recompileJsx();">Recompile</button>
+        </div>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type="text/javascript">
             Babel.registerPreset("jsx-lite", {
                 presets: [[Babel.availablePresets['env']]],
                 plugins: [
-                    [
-                        Babel.availablePlugins["transform-modules-amd"],
-                    ],
                     [
                         Babel.availablePlugins["transform-react-jsx"],
                         {
@@ -23,32 +83,39 @@
                     ],
                 ],
             });
+
+            let sourceContainer = document.getElementById('jsx-input');
+            sourceContainer.innerHTML = `
+const testContainer = () => (
+    <Website />
+);
+
+const Website = () => {
+    const getHeaderStyle = () => ({
+        textAlign: 'center',
+    });
+
+    const getMainStyle = () => ({
+        textAlign: 'center',
+    });
+
+    return (
+        <>
+            <header style={getHeaderStyle()}>
+                <h1>Hi, I'm Saahil</h1>
+            </header>
+            <main style={getMainStyle()}>
+                Who are you?
+            </main>
+        </>
+    );
+};
+
+let outputContainer = document.getElementById('output-js');
+outputContainer.innerHTML = testContainer();
+`
         </script>
-        <script data-main="scripts/jsx-lite" src="../scripts/require.js"></script>
-        <script type="text/babel" data-presets="jsx-lite">
-            const Website = () => {
-                const getHeaderStyle = () => ({
-                    textAlign: 'center',
-                });
-
-                const getMainStyle = () => ({
-                    textAlign: 'center',
-                });
-
-                return (
-                    <>
-                        <header style={getHeaderStyle()}>
-                            <h1>Hi, I'm Saahil</h1>
-                        </header>
-                        <main style={getMainStyle()}>
-                            Who are you?
-                        </main>
-                    </>
-                );
-            };
-
-            let codeContainer = document.getElementById('content');
-            codeContainer.innerHTML = Website;
-        </script>
+        <script type="text/javascript" src="../scripts/jsx-lite.js"></script>
+        <script type="text/javascript">recompileJsx();</script>
     </body>
 </html>
