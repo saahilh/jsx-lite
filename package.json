@@ -1,10 +1,11 @@
 {
-  "name": "jsx-lite-browser",
+  "name": "jsx-lite-console",
   "version": "1.0.0",
   "description": "A lightweight transpiler from jsx to html",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir build; webpack ./build/app.js -o dist/bundle.js"
+    "build": "babel src --out-dir build; webpack ./build/app.js -o dist/bundle.js",
+    "test": "jest --watchAll"
   },
   "author": "Saahil Hamayun",
   "license": "ISC",
@@ -13,13 +14,12 @@
     "@babel/core": "^7.11.4",
     "@babel/plugin-transform-react-jsx": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
+    "codemirror": "^5.57.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
+    "jest": "^25.5.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
-  },
-  "dependencies": {
-    "codemirror": "^5.57.0"
   }
 }

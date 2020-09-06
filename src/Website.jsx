@@ -1,4 +1,4 @@
-import JsxLite from '../../scripts/jsx-lite';
+import JsxLite from '../scripts/jsx-lite';
 
 const Website = () => {
     const getHeaderStyle = () => ({

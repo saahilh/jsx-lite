@@ -1,4 +1,4 @@
-import JsxLite from '../../scripts/jsx-lite';
+import JsxLite from '../scripts/jsx-lite';
 
 describe('createComponent', () => {
   it('Should be a function', () => {
