@@ -58,4 +58,6 @@ const JsxLite = {
   },
 };
 
-export default JsxLite;
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = JsxLite
+}
