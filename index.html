@@ -65,10 +65,6 @@
         <script src="./node_modules/codemirror/mode/jsx/jsx.js"></script>
         <script src="./node_modules/codemirror/keymap/sublime.js"></script>
         <script src="./node_modules/codemirror/addon/edit/matchbrackets.js"></script>
-        <script src="./node_modules/codemirror/addon/fold/foldcode.js"></script>
-        <script src="./node_modules/codemirror/addon/fold/brace-fold.js"></script>
-        <script src="./node_modules/codemirror/addon/fold/foldgutter.js"></script>
-        <link rel="stylesheet" href="./node_modules/codemirror/addon/fold/foldgutter.css">
         <script src="./node_modules/codemirror/addon/selection/active-line.js"></script>
         <script src="./node_modules/codemirror/addon/scroll/scrollPastEnd.js"></script>
         <script src="./node_modules/codemirror/addon/comment/comment.js"></script>
@@ -103,48 +99,7 @@
                 ],
             });
 
-            let defaultSourceValue = `const PageRoot = () => (
-  <PageContainer>
-  	<Example />
-  </PageContainer>
-);
-
-const PageContainer = ({ children }) => {
-  const getStyle = () => ({
-    backgroundColor: '#3e3e3e',
-    color: '#2c2c2c',
-    height: '100%',
-    display: 'flex',
-  });
-
-  return (
-    <div style={getStyle()}>
-	    {children}
-    </div>
-  );
-};
-
-const Example = () => {
-  const getContainerStyle = () => ({
-    textAlign: 'center',
-    backgroundColor: '#ffb928',
-    width: '350px',
-    height: '150px',
-    borderRadius: '2px',
-    margin: '20px auto 0',
-  });
-
-  return (
-    <div style={getContainerStyle()}>
-      <h1> Welcome to the jsx-lite playground</h1>
-      <span>Press CTRL+S to recompile (changes will not be saved on refresh)</span>
-    </div>
-  );
-};
-
-let root = document.getElementById('output-js');
-root.innerHTML = PageRoot();
-`;
+            let defaultSourceValue = `const PageRoot = () => (\n\t<PageContainer>\n\t\t<Example />\n\t</PageContainer>\n);\n\nconst PageContainer = ({ children }) => {\n\tconst getStyle = () => ({\n\t\tbackgroundColor: '#3e3e3e',\n\t\tcolor: '#2c2c2c',\n\t\theight: '100%',\n\t\tdisplay: 'flex',\n\t});\n\n\treturn (\n\t\t<div style={getStyle()}>\n\t\t\t{children}\n\t\t</div>\n\t);\n};\n\nconst Example = () => {\n\tconst getContainerStyle = () => ({\n\t\ttextAlign: 'center',\n\t\tbackgroundColor: '#ffb928',\n\t\twidth: '350px',\n\t\theight: '150px',\n\t\tborderRadius: '2px',\n\t\tmargin: '20px auto 0',\n\t});\n\n\treturn (\n\t\t<div style={getContainerStyle()}>\n\t\t\t<h1>Welcome to the jsx-lite playground</h1>\n\t\t\t<span>Press CTRL+S to recompile (changes will not be saved on refresh)</span>\n\t\t</div>\n\t);\n};\n\nlet root = document.getElementById('output-js');\nroot.innerHTML = PageRoot();\n`;
             let sourceTextArea = document.getElementById('input-jsx');
 
             let codeMirrorInstance = CodeMirror(function(elt) {
@@ -159,13 +114,9 @@ root.innerHTML = PageRoot();
                 lineWrapping: true,
                 extraKeys: {
                     "Ctrl-S": recompileJsx,
-                    "Ctrl-Q": (cm) => cm.foldCode(cm.getCursor()),
                 },
                 matchBrackets: true,
                 comment: true,
-                foldCode: true,
-                foldGutter: true,
-                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
                 styleActiveLine: true,
                 scrollPastEnd: true,
                 autoCloseBrackets: true,
