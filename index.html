@@ -23,7 +23,7 @@
             #content > * {
                 min-width: 400px;
                 flex: 1 1 50%;
-                height: calc(100vh - 35px);
+                height: calc(100vh - 47px - 35px);
                 overflow: hidden;
             }
 
@@ -36,19 +36,30 @@
                 margin-top: 10px;
             }
 
-            footer {
+            header, footer {
                 text-align: center;
-                background: #3D3D3D;
-                border-top: 1px solid #4D4D4D;
-                box-shadow: 0 10px 20px black;
+                background-color: #1e1e1e;
+                color: #dadada;
                 padding: 10px 0 8px 0;
+            }
+
+            footer a {
+                color: #ffb928;
+            }
+
+            footer a:hover {
+                color: #9ddfe9;
+            }
+
+            header h1 {
+                margin: 0;
             }
         </style>
 
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script src="./node_modules/codemirror/lib/codemirror.js"></script>
         <link rel="stylesheet" href="./node_modules/codemirror/lib/codemirror.css">
-        <link rel="stylesheet" href="./node_modules/codemirror/theme/ambiance.css">
+        <link rel="stylesheet" href="./node_modules/codemirror/theme/mbo.css">
         <script src="./node_modules/codemirror/mode/xml/xml.js"></script>
         <script src="./node_modules/codemirror/mode/javascript/javascript.js"></script>
         <script src="./node_modules/codemirror/mode/jsx/jsx.js"></script>
@@ -56,6 +67,9 @@
         <script src="./scripts/jsx-lite.js"></script>
     </head>
     <body>
+        <header>
+            <h1>JSX-LITE PLAYGROUND</h1>
+        </header>
         <div id="content">
             <textarea id="input-jsx"></textarea>
             <div id="output-js"></div>
@@ -87,8 +101,8 @@
 
 const PageContainer = ({ children }) => {
   const getStyle = () => ({
-    backgroundColor: '#1e1e1e',
-    color: '#8f9d6a',
+    backgroundColor: '#3e3e3e',
+    color: '#2c2c2c',
     height: '100%',
     display: 'flex',
   });
@@ -103,8 +117,8 @@ const PageContainer = ({ children }) => {
 const Example = () => {
   const getContainerStyle = () => ({
     textAlign: 'center',
-    backgroundColor: '#eed1b3',
-    width: '250px',
+    backgroundColor: '#ffb928',
+    width: '350px',
     height: '150px',
     borderRadius: '2px',
     margin: '20px auto 0',
@@ -112,7 +126,7 @@ const Example = () => {
 
   return (
     <div style={getContainerStyle()}>
-      <h1>jsx-lite playground</h1>
+      <h1> Welcome to the jsx-lite playground</h1>
       <span>(changes will not be saved)</span>
     </div>
   );
@@ -128,7 +142,7 @@ root.innerHTML = PageRoot();
             }, {
                 value: defaultSourceValue,
                 mode: 'jsx',
-                theme: 'ambiance',
+                theme: 'mbo',
                 keyMap: 'sublime',
                 lineNumbers: true,
                 tabSize: 2,
