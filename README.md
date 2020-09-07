@@ -1,5 +1,6 @@
 # jsx-lite
 A babel-based tool that will serve as a lightweight transpiler from jsx to html. 
+
 ![Image of browser-based editor](https://raw.githubusercontent.com/saahilh/jsx-lite/master/img/jsx-lite-demo.PNG)
 
 # Description
