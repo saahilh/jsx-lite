@@ -9,13 +9,22 @@
                 font-family: monospace;
             }
 
-            #content {
-                margin: auto;
-                width: 75vw;
+            body {
+                margin: 0;
             }
 
-            #output-js {
-                height: 300px;
+            #content {
+                margin: auto;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: stretch;
+            }
+
+            #content > * {
+                min-width: 400px;
+                flex: 1 1 50%;
+                height: calc(100vh - 35px);
+                overflow: hidden;
             }
 
             .error {
@@ -26,8 +35,17 @@
                 width: 200px;
                 margin-top: 10px;
             }
+
+            footer {
+                text-align: center;
+                background: #3D3D3D;
+                border-top: 1px solid #4D4D4D;
+                box-shadow: 0 10px 20px black;
+                padding: 10px 0 8px 0;
+            }
         </style>
 
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script src="./node_modules/codemirror/lib/codemirror.js"></script>
         <link rel="stylesheet" href="./node_modules/codemirror/lib/codemirror.css">
         <link rel="stylesheet" href="./node_modules/codemirror/theme/ambiance.css">
@@ -41,9 +59,12 @@
         <div id="content">
             <textarea id="input-jsx"></textarea>
             <div id="output-js"></div>
-            <button onclick="recompileJsx();">Recompile</button>
+            <!-- <button onclick="recompileJsx();">Recompile</button> -->
         </div>
-        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <footer>
+            Designed & Built by
+            <a rel="noopener" href="https://github.com/saahilh/jsx-lite" aria-label="Open jsx-lite on GitHub" target="_blank">Saahil Hamayun</a>
+        </footer>
         <script type="text/javascript">
             Babel.registerPreset("jsx-lite", {
                 presets: [[Babel.availablePresets['env']]],
@@ -98,7 +119,8 @@ const Example = () => {
 };
 
 let root = document.getElementById('output-js');
-root.innerHTML = PageRoot();`;
+root.innerHTML = PageRoot();
+`;
             let sourceTextArea = document.getElementById('input-jsx');
 
             let codeMirrorInstance = CodeMirror(function(elt) {
@@ -110,6 +132,7 @@ root.innerHTML = PageRoot();`;
                 keyMap: 'sublime',
                 lineNumbers: true,
                 tabSize: 2,
+                lineWrapping: true,
             });
 
             function recompileJsx() {
