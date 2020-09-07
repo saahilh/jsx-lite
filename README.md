@@ -1,5 +1,6 @@
 # jsx-lite
 A babel-based tool that will serve as a lightweight transpiler from jsx to html. 
+![Image of browser-based editor](https://raw.githubusercontent.com/saahilh/jsx-lite/master/img/jsx-lite-demo.PNG)
 
 # Description
 I wanted to try going from jsx to HTML in an effort to learn how to make DSLs using JavaScript.
@@ -14,11 +15,9 @@ So in the transformation of jsx -> js -> html, I am currently working on the js 
     * To run transformation on the example in src/app.jsx, `npm run build`. This will create the output dist/bundle.js that will be loaded in by the templated index.html.
         * The root file to add jsx code is src/app.jsx.
         * The webpage produced can be seen by opening build.html in a browser.
-* Browser-based example (w/ editor)
+* Browser-based example (see image above, with 'jsx-playground')
     * To setup, `npm install`
     * Open index.html (temporary until I get the project onto my personal website)
-    * The browser-based editor currently looks as follows:
-![Image of browser-based editor](https://raw.githubusercontent.com/saahilh/jsx-lite/master/img/jsx-lite-demo.PNG)
 
 # TODO
 * Follow the approach outlined here when setting up on website:
