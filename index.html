@@ -64,6 +64,16 @@
         <script src="./node_modules/codemirror/mode/javascript/javascript.js"></script>
         <script src="./node_modules/codemirror/mode/jsx/jsx.js"></script>
         <script src="./node_modules/codemirror/keymap/sublime.js"></script>
+        <script src="./node_modules/codemirror/addon/edit/matchbrackets.js"></script>
+        <script src="./node_modules/codemirror/addon/fold/foldcode.js"></script>
+        <script src="./node_modules/codemirror/addon/fold/brace-fold.js"></script>
+        <script src="./node_modules/codemirror/addon/fold/foldgutter.js"></script>
+        <link rel="stylesheet" href="./node_modules/codemirror/addon/fold/foldgutter.css">
+        <script src="./node_modules/codemirror/addon/selection/active-line.js"></script>
+        <script src="./node_modules/codemirror/addon/scroll/scrollPastEnd.js"></script>
+        <script src="./node_modules/codemirror/addon/comment/comment.js"></script>
+        <script src="./node_modules/codemirror/addon/edit/closebrackets.js"></script>
+
         <script src="./scripts/jsx-lite.js"></script>
     </head>
     <body>
@@ -127,7 +137,7 @@ const Example = () => {
   return (
     <div style={getContainerStyle()}>
       <h1> Welcome to the jsx-lite playground</h1>
-      <span>(changes will not be saved)</span>
+      <span>Press CTRL+S to recompile (changes will not be saved on refresh)</span>
     </div>
   );
 };
@@ -147,6 +157,18 @@ root.innerHTML = PageRoot();
                 lineNumbers: true,
                 tabSize: 2,
                 lineWrapping: true,
+                extraKeys: {
+                    "Ctrl-S": recompileJsx,
+                    "Ctrl-Q": (cm) => cm.foldCode(cm.getCursor()),
+                },
+                matchBrackets: true,
+                comment: true,
+                foldCode: true,
+                foldGutter: true,
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+                styleActiveLine: true,
+                scrollPastEnd: true,
+                autoCloseBrackets: true,
             });
 
             function recompileJsx() {
