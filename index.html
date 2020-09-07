@@ -58,7 +58,47 @@
                 ],
             });
 
-            let defaultSourceValue = `const exampleContainer = () => (\n\t<Example />\n);\n\nconst Example = () => {\t\n\tconst getStyle = () => ({\n\t\tbackgroundColor: '#1e1e1e',\n\t\tcolor: '#d4d4d4',\n\t\theight: '100%',\n\t\ttextAlign: 'center',\n\t});\n\n\treturn (\n\t\t<div style={getStyle()}>\n\t\t\t<h1>Hi, I'm Saahil</h1>\n\t\t\t<span>Who are you?</span>\n\t\t</div>\n\t);\n};\n\nlet root = document.getElementById('output-js');\nroot.innerHTML = exampleContainer();\n`;
+            let defaultSourceValue = `const PageRoot = () => (
+  <PageContainer>
+  	<Example />
+  </PageContainer>
+);
+
+const PageContainer = ({ children }) => {
+  const getStyle = () => ({
+    backgroundColor: '#1e1e1e',
+    color: '#8f9d6a',
+    height: '100%',
+    display: 'flex',
+  });
+
+  return (
+    <div style={getStyle()}>
+	    {children}
+    </div>
+  );
+};
+
+const Example = () => {
+  const getContainerStyle = () => ({
+    textAlign: 'center',
+    backgroundColor: '#eed1b3',
+    width: '250px',
+    height: '150px',
+    borderRadius: '2px',
+    margin: '20px auto 0',
+  });
+
+  return (
+    <div style={getContainerStyle()}>
+      <h1>jsx-lite playground</h1>
+      <span>(changes will not be saved)</span>
+    </div>
+  );
+};
+
+let root = document.getElementById('output-js');
+root.innerHTML = PageRoot();`;
             let sourceTextArea = document.getElementById('input-jsx');
 
             let codeMirrorInstance = CodeMirror(function(elt) {
