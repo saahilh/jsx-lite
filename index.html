@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-
-<!-- 
-    Warning:
-        This project uses an eval call on user input: this can be a major security risk depending on where it is hosted.
-        Do not host this on a domain that makes use of cookies to store important data.
-        Please read up further on XSS for ways to reduce the risks.
--->
-
 <html>
     <head>
-        <meta charset="utf-8" />
+        <!-- 
+            WARNING:
+                This project uses an eval call on user input: this can be a major security risk depending on where it is hosted.
+                Do not host this on a domain that makes use of cookies to store important data.
+                Please read up further on XSS for ways to reduce the risks.
+        -->
+
+        <title>JSX Lite</title>
+
+        <meta name="description" content="JSX Lite is jsx with a partial implementation done by Saahil Hamayun.">
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
         <style>
             html {
                 box-sizing: border-box;
@@ -81,7 +87,7 @@
     </head>
     <body>
         <header>
-            <h1>JSX-LITE PLAYGROUND</h1>
+            <h1>JSX LITE PLAYGROUND</h1>
         </header>
         <div id="content">
             <textarea id="input-jsx"></textarea>
@@ -90,7 +96,7 @@
         </div>
         <footer>
             Designed & Built by
-            <a rel="noopener" href="https://github.com/saahilh/jsx-lite" aria-label="Open jsx-lite on GitHub" target="_blank">Saahil Hamayun</a>
+            <a rel="noopener" href="https://github.com/saahilh/jsx-lite" aria-label="Open JSX Lite on GitHub" target="_blank">Saahil Hamayun</a>
         </footer>
         <script type="text/javascript">
             Babel.registerPreset("jsx-lite", {
@@ -106,7 +112,7 @@
                 ],
             });
 
-            let defaultSourceValue = `const PageRoot = () => (\n\t<PageContainer>\n\t\t<Example />\n\t</PageContainer>\n);\n\nconst PageContainer = ({ children }) => {\n\tconst getStyle = () => ({\n\t\tbackgroundColor: '#3e3e3e',\n\t\tcolor: '#2c2c2c',\n\t\theight: '100%',\n\t\tdisplay: 'flex',\n\t});\n\n\treturn (\n\t\t<div style={getStyle()}>\n\t\t\t{children}\n\t\t</div>\n\t);\n};\n\nconst Example = () => {\n\tconst getContainerStyle = () => ({\n\t\ttextAlign: 'center',\n\t\tbackgroundColor: '#ffb928',\n\t\twidth: '350px',\n\t\theight: '150px',\n\t\tborderRadius: '2px',\n\t\tmargin: '20px auto 0',\n\t});\n\n\treturn (\n\t\t<div style={getContainerStyle()}>\n\t\t\t<h1>Welcome to the jsx-lite playground</h1>\n\t\t\t<p>Press CTRL+S to recompile this preview</p>\n\t\t\t<p>(changes will be lost on page refresh)</p>\n\t\t</div>\n\t);\n};\n\ndocument.getElementById('output-js').innerHTML = (<PageRoot />);\n`;
+            let defaultSourceValue = `const PageRoot = () => (\n\t<PageContainer>\n\t\t<Example />\n\t</PageContainer>\n);\n\nconst PageContainer = ({ children }) => {\n\tconst getStyle = () => ({\n\t\tbackgroundColor: '#3e3e3e',\n\t\tcolor: '#2c2c2c',\n\t\theight: '100%',\n\t\tdisplay: 'flex',\n\t});\n\n\treturn (\n\t\t<div style={getStyle()}>\n\t\t\t{children}\n\t\t</div>\n\t);\n};\n\nconst Example = () => {\n\tconst getContainerStyle = () => ({\n\t\ttextAlign: 'center',\n\t\tbackgroundColor: '#ffb928',\n\t\twidth: '350px',\n\t\theight: '150px',\n\t\tborderRadius: '2px',\n\t\tmargin: '20px auto 0',\n\t});\n\n\treturn (\n\t\t<div style={getContainerStyle()}>\n\t\t\t<h1>Welcome to the JSX Lite playground</h1>\n\t\t\t<p>Press CTRL+S to recompile this preview</p>\n\t\t\t<p>(changes will be lost on page refresh)</p>\n\t\t</div>\n\t);\n};\n\ndocument.getElementById('output-js').innerHTML = (<PageRoot />);\n`;
             let sourceTextArea = document.getElementById('input-jsx');
 
             let codeMirrorInstance = CodeMirror(function(elt) {
