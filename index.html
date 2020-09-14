@@ -8,13 +8,34 @@
                 Please read up further on XSS for ways to reduce the risks.
         -->
 
-        <title>JSX Lite</title>
+        <title>JSX Lite | A partial implementation of jsx</title>
 
         <meta name="description" content="JSX Lite is jsx with a partial implementation done by Saahil Hamayun.">
     
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="./node_modules/codemirror/lib/codemirror.js"></script>
+        <link rel="stylesheet" href="./node_modules/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="./node_modules/codemirror/theme/mbo.css">
+        <script src="./node_modules/codemirror/mode/xml/xml.js"></script>
+        <script src="./node_modules/codemirror/mode/javascript/javascript.js"></script>
+        <script src="./node_modules/codemirror/mode/jsx/jsx.js"></script>
+        <script src="./node_modules/codemirror/keymap/sublime.js"></script>
+        <script src="./node_modules/codemirror/addon/edit/matchbrackets.js"></script>
+        <script src="./node_modules/codemirror/addon/selection/active-line.js"></script>
+        <script src="./node_modules/codemirror/addon/scroll/scrollpastend.js"></script>
+        <script src="./node_modules/codemirror/addon/comment/comment.js"></script>
+        <script src="./node_modules/codemirror/addon/edit/closebrackets.js"></script>
+
+        <script src="./scripts/jsx-lite.js"></script>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+        <link rel="manifest" href="./favicon/site.webmanifest">
     
         <style>
             html {
@@ -68,22 +89,6 @@
                 margin: 0;
             }
         </style>
-
-        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-        <script src="./node_modules/codemirror/lib/codemirror.js"></script>
-        <link rel="stylesheet" href="./node_modules/codemirror/lib/codemirror.css">
-        <link rel="stylesheet" href="./node_modules/codemirror/theme/mbo.css">
-        <script src="./node_modules/codemirror/mode/xml/xml.js"></script>
-        <script src="./node_modules/codemirror/mode/javascript/javascript.js"></script>
-        <script src="./node_modules/codemirror/mode/jsx/jsx.js"></script>
-        <script src="./node_modules/codemirror/keymap/sublime.js"></script>
-        <script src="./node_modules/codemirror/addon/edit/matchbrackets.js"></script>
-        <script src="./node_modules/codemirror/addon/selection/active-line.js"></script>
-        <script src="./node_modules/codemirror/addon/scroll/scrollpastend.js"></script>
-        <script src="./node_modules/codemirror/addon/comment/comment.js"></script>
-        <script src="./node_modules/codemirror/addon/edit/closebrackets.js"></script>
-
-        <script src="./scripts/jsx-lite.js"></script>
     </head>
     <body>
         <header>
