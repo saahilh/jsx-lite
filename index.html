@@ -167,6 +167,13 @@
                     outputContainer.appendChild(errorContainer);
                 }
             };
+
+            document.onkeydown = function(e) {
+                if (e.ctrlKey && e.keyCode === 83) {
+                    e.preventDefault();
+                    recompileJsx();
+                }
+            };
         </script>
         <script type="text/javascript">recompileJsx();</script>
     </body>
