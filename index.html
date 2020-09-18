@@ -145,16 +145,7 @@
                 
                 try {
                     eval(Babel.transform(codeMirrorInstance.getValue(), {
-                        presets: [[Babel.availablePresets['env']]],
-                        plugins: [
-                            [
-                                Babel.availablePlugins["transform-react-jsx"],
-                                {
-                                    "pragma": "JsxLite.createComponent",
-                                    "pragmaFrag": "JsxLite.createFragment"
-                                }
-                            ],
-                        ],
+                        presets: [[Babel.availablePresets['jsx-lite']]],
                     }).code);
                 } catch (e) {
                     const errorContainer = document.createElement('pre');
