@@ -139,6 +139,30 @@
             nav ul li {
                 margin: 2px;
             }
+
+            #about {
+                background-color: #3e3e3e;
+                display: none;
+            }
+
+            #about div {
+                margin: 20px auto 0;
+                padding: 20px;
+                width: 400px;
+                background-color: #1e1e1e;
+            }
+
+            #about a {
+                color: #ffb928;
+            }
+
+            #about a:hover {
+                color: #9ddfe9;
+            }
+
+            .center {
+                text-align: center;
+            }
         </style>
 
         <script>
@@ -154,6 +178,27 @@
 
                         const clickedElement = e.target;
                         clickedElement.classList.add('selected');
+
+                        if (!document.getElementsByClassName('CodeMirror').style) {
+                            document.getElementsByClassName('CodeMirror').style = {};
+                        }
+    
+                        const action = clickedElement.getAttribute('href');
+                        switch(action) {
+                            case '#about':
+                                document.getElementsByClassName('CodeMirror')[0].style.display = 'none';
+                                document.getElementById('output-js').style.display = 'none';
+                                document.getElementById('about').style.display = 'block';
+                                break;
+                            case '#editor':
+                                document.getElementsByClassName('CodeMirror')[0].style.display = 'block';
+                                document.getElementById('output-js').style.display = 'block';
+                                document.getElementById('about').style.display = 'none';
+                                break;
+                            default:
+                                // Do nothing
+                                break;
+                        }
                     });
                 }
             });
@@ -164,19 +209,29 @@
             <h1>JSX Lite</h1>
             <nav>
                 <ul>
-                    <li><a class="nav-item" href="#">About</a></li>
-                    <li><a class="nav-item selected" href="#">Editor</a></li>
+                    <li><a class="nav-item" href="#about">About</a></li>
+                    <li><a class="nav-item selected" href="#editor">Editor</a></li>
                 </ul>
             </nav>
         </header>
-        <div id="content">
+        <main id="content">
+            <article id="about">
+                <div>
+                    <p>Welcome to the online code editor for JSX Lite.</p>
+                    <p>JSX Lite is an in-development babel-based tool that will serve as a lightweight transpiler from jsx to html.</p>
+                    <p>JSX Lite is a project by Saahil Hamayun. To learn more about his other projects, visit his website at:</p>
+                    <p class="center">
+                        <a rel="noopener" target="_blank" href="https://www.saahilhamayun.com" aria-label="Open Saahil Hamayun's Personal Website">www.saahilhamayun.com</a>
+                    </p>
+                </div>
+            </article>
             <textarea id="input-jsx"></textarea>
-            <div id="output-js"></div>
+            <div id="output-js" style=""></div>
             <!-- <button onclick="recompileJsx();">Recompile</button> -->
-        </div>
+        </main>
         <footer>
             Designed & Built by
-            <a rel="noopener" href="https://github.com/saahilh/jsx-lite" aria-label="Open JSX Lite on GitHub" target="_blank">Saahil Hamayun</a>
+            <a rel="noopener" target="_blank" href="https://github.com/saahilh/jsx-lite" aria-label="Open JSX Lite on GitHub">Saahil Hamayun</a>
         </footer>
         <script type="text/javascript">
             Babel.registerPreset("jsx-lite", {
