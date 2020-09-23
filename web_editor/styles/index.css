@@ -27,11 +27,6 @@ body {
     color: #d16969;
 }
 
-#content button {
-    width: 200px;
-    margin-top: 10px;
-}
-
 footer {
     text-align: center;
     padding: 10px 0 8px 0;
@@ -134,4 +129,21 @@ nav ul li {
 
 #output-js, .CodeMirror {
     display: 'block';
+}
+
+#recompile-button {
+    display: none;
+}
+
+@media (pointer: coarse) {
+    #recompile-button {
+        margin: 10px 0;
+        display: block;
+
+        height: 50px;
+        width: 100%;
+
+        background-color: #ffb928;
+        color: #2c2c2c;
+    }
 }
