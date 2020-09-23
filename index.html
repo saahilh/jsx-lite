@@ -59,7 +59,7 @@
             #content > * {
                 min-width: 400px;
                 flex: 1 1 50%;
-                height: calc(100vh - 47px - 35px);
+                height: calc(100vh - 39px - 35px);
                 overflow: hidden;
             }
 
@@ -72,7 +72,7 @@
                 margin-top: 10px;
             }
 
-            header, footer {
+            footer {
                 text-align: center;
                 padding: 10px 0 8px 0;
             }
@@ -85,14 +85,89 @@
                 color: #9ddfe9;
             }
 
+            header {
+                display: flex;
+            }
+
             header h1 {
                 margin: 0;
+                color: #ffb928;
+                font-size: 36px;
+                padding: 0 15px;
+            }
+
+            nav ul {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            nav ul li {
+                list-style-type: none;
+                flex-grow: 1;
+                width: 150px;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                text-decoration: none;
+                border: 1px solid #ffb928;
+                font-size: 20px;
+                margin: 0;
+                height: 100%;
+
+                color: #ffb928;
+            }
+
+            nav ul li .selected {
+                color: #2c2c2c;
+                background-color: #ffb928;
+            }
+
+            nav ul li:hover {
+                background-color: #ffb928cc;
+            }
+
+            nav ul li a:hover {
+                color: #2c2c2c;
+                border-color: #ffb928cc;
+            }
+            
+            nav ul li {
+                margin: 2px;
             }
         </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                for (currentNavElement of document.getElementsByClassName('nav-item')) {
+                    currentNavElement.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        for (element of document.getElementsByClassName('selected')) {
+                            element.classList.remove('selected');
+                        }
+
+                        const clickedElement = e.target;
+                        clickedElement.classList.add('selected');
+                    });
+                }
+            });
+        </script>
     </head>
     <body>
         <header>
-            <h1>JSX LITE PLAYGROUND</h1>
+            <h1>JSX Lite</h1>
+            <nav>
+                <ul>
+                    <li><a class="nav-item" href="#">About</a></li>
+                    <li><a class="nav-item selected" href="#">Editor</a></li>
+                </ul>
+            </nav>
         </header>
         <div id="content">
             <textarea id="input-jsx"></textarea>
@@ -117,7 +192,7 @@
                 ],
             });
 
-            let defaultSourceValue = `const PageRoot = () => (\n\t<PageContainer>\n\t\t<Example />\n\t</PageContainer>\n);\n\nconst PageContainer = ({ children }) => {\n\tconst getStyle = () => ({\n\t\tbackgroundColor: '#3e3e3e',\n\t\tcolor: '#2c2c2c',\n\t\theight: '100%',\n\t\tdisplay: 'flex',\n\t});\n\n\treturn (\n\t\t<div style={getStyle()}>\n\t\t\t{children}\n\t\t</div>\n\t);\n};\n\nconst Example = () => {\n\tconst getContainerStyle = () => ({\n\t\ttextAlign: 'center',\n\t\tbackgroundColor: '#ffb928',\n\t\twidth: '350px',\n\t\theight: '150px',\n\t\tborderRadius: '2px',\n\t\tmargin: '20px auto 0',\n\t});\n\n\treturn (\n\t\t<div style={getContainerStyle()}>\n\t\t\t<h1>Welcome to the JSX Lite playground</h1>\n\t\t\t<p>Press CTRL+S to recompile this preview</p>\n\t\t\t<p>(changes will be lost on page refresh)</p>\n\t\t</div>\n\t);\n};\n\ndocument.getElementById('output-js').innerHTML = (<PageRoot />);\n`;
+            let defaultSourceValue = `const PageRoot = () => (\n\t<PageContainer>\n\t\t<Example />\n\t</PageContainer>\n);\n\nconst PageContainer = ({ children }) => {\n\tconst getStyle = () => ({\n\t\tbackgroundColor: '#3e3e3e',\n\t\tcolor: '#2c2c2c',\n\t\theight: '100%',\n\t\tdisplay: 'flex',\n\t});\n\n\treturn (\n\t\t<div style={getStyle()}>\n\t\t\t{children}\n\t\t</div>\n\t);\n};\n\nconst Example = () => {\n\tconst getContainerStyle = () => ({\n\t\ttextAlign: 'center',\n\t\tbackgroundColor: '#ffb928',\n\t\twidth: '350px',\n\t\theight: '150px',\n\t\tborderRadius: '2px',\n\t\tmargin: '20px auto 0',\n\t});\n\n\treturn (\n\t\t<div style={getContainerStyle()}>\n\t\t\t<h1>Welcome to the JSX Lite Web Editor</h1>\n\t\t\t<p>Press CTRL+S to recompile this preview</p>\n\t\t\t<p>(changes will be lost on page refresh)</p>\n\t\t</div>\n\t);\n};\n\ndocument.getElementById('output-js').innerHTML = (<PageRoot />);\n`;
             let sourceTextArea = document.getElementById('input-jsx');
 
             let codeMirrorInstance = CodeMirror(function(elt) {
