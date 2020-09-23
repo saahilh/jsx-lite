@@ -1,7 +1,7 @@
 # jsx-lite
 A babel-based tool that will serve as a lightweight transpiler from jsx to html. 
 
-![Image of browser-based editor](https://raw.githubusercontent.com/saahilh/jsx-lite/master/img/jsx-lite-demo.PNG)
+![Image of browser-based editor](https://raw.githubusercontent.com/saahilh/jsx-lite/master/img/jsxlite-demo.PNG)
 
 # Description
 I wanted to try going from jsx to HTML in an effort to learn how to make DSLs using JavaScript.
