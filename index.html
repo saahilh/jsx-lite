@@ -163,6 +163,10 @@
             .center {
                 text-align: center;
             }
+
+            #output-js, .CodeMirror {
+                display: 'block';
+            }
         </style>
 
         <script>
@@ -179,10 +183,6 @@
                         const clickedElement = e.target;
                         clickedElement.classList.add('selected');
 
-                        if (!document.getElementsByClassName('CodeMirror').style) {
-                            document.getElementsByClassName('CodeMirror').style = {};
-                        }
-    
                         const action = clickedElement.getAttribute('href');
                         switch(action) {
                             case '#about':
@@ -209,8 +209,8 @@
             <h1>JSX Lite</h1>
             <nav>
                 <ul>
-                    <li><a class="nav-item" href="#about">About</a></li>
                     <li><a class="nav-item selected" href="#editor">Editor</a></li>
+                    <li><a class="nav-item" href="#about">About</a></li>
                 </ul>
             </nav>
         </header>
@@ -226,7 +226,7 @@
                 </div>
             </article>
             <textarea id="input-jsx"></textarea>
-            <div id="output-js" style=""></div>
+            <div id="output-js"></div>
             <!-- <button onclick="recompileJsx();">Recompile</button> -->
         </main>
         <footer>
