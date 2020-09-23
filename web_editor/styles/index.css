@@ -1,0 +1,129 @@
+html {
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+body {
+    margin: 0;
+    background-color: #1e1e1e;
+    color: #dadada;
+}
+
+#content {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+#content > * {
+    min-width: 400px;
+    flex: 1 1 50%;
+    height: calc(100vh - 39px - 35px);
+    overflow: hidden;
+}
+
+.error {
+    color: #d16969;
+}
+
+#content button {
+    width: 200px;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0 8px 0;
+}
+
+footer a {
+    color: #ffb928;
+}
+
+footer a:hover {
+    color: #9ddfe9;
+}
+
+header {
+    display: flex;
+}
+
+header h1 {
+    margin: 0;
+    color: #ffb928;
+    font-size: 36px;
+    padding: 0 15px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    list-style-type: none;
+    flex-grow: 1;
+    width: 150px;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    border: 1px solid #ffb928;
+    font-size: 20px;
+    margin: 0;
+    height: 100%;
+
+    color: #ffb928;
+}
+
+nav ul li .selected {
+    color: #2c2c2c;
+    background-color: #ffb928;
+}
+
+nav ul li:hover {
+    background-color: #ffb928cc;
+}
+
+nav ul li a:hover {
+    color: #2c2c2c;
+    border-color: #ffb928cc;
+}
+
+nav ul li {
+    margin: 2px;
+}
+
+#about {
+    background-color: #3e3e3e;
+    display: none;
+}
+
+#about div {
+    margin: 20px auto 0;
+    padding: 20px;
+    width: 400px;
+    background-color: #1e1e1e;
+}
+
+#about a {
+    color: #ffb928;
+}
+
+#about a:hover {
+    color: #9ddfe9;
+}
+
+.center {
+    text-align: center;
+}
+
+#output-js, .CodeMirror {
+    display: 'block';
+}
