@@ -14,11 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const action = clickedElement.getAttribute('href');
             switch(action) {
                 case '#about':
-                    document.getElementById('editor').style.display = 'none';
+                    for (child of document.getElementById('content').children) {
+                        child.style.display = 'none';
+                    }
                     document.getElementById('about').style.display = 'block';
                     break;
                 case '#editor':
-                    document.getElementById('editor').style.display = 'block';
+                    for (child of document.getElementById('content').children) {
+                        child.style.display = 'block';
+                    }
                     document.getElementById('about').style.display = 'none';
                     break;
                 default:
