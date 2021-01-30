@@ -20,12 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('about').style.display = 'block';
                     break;
                 case '#editor':
-                    if (matchMedia('(pointer:coarse)').matches) {
-                        for (child of document.getElementById('content').children) {
-                            child.style.display = 'block';
-                        }
+                    for (child of document.getElementById('content').children) {
+                        child.style.display = 'block';
                     }
-                    document.getElementById('output-js').style.display = 'block';
+                    
+                    if (!matchMedia('(pointer:coarse)').matches) {
+                        document.getElementById('recompile-button').style.display = 'none';
+                    }
+
                     document.getElementById('about').style.display = 'none';
                     break;
                 default:
